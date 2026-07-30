@@ -1,0 +1,66 @@
+{
+  "$schema": "https://developers.reddit.com/schema/config-file.v1.json",
+  "name": "twente-match-thread-",
+  "server": {},
+  "scheduler": {
+    "tasks": {
+      "sync-matches": {
+        "endpoint": "/internal/scheduler/sync-matches"
+      },
+      "post-thread": {
+        "endpoint": "/internal/scheduler/post-thread"
+      }
+    }
+  },
+  "menu": {
+    "items": [
+      {
+        "label": "Sync wedstrijden (test)",
+        "description": "Haal wedstrijden op van football-data.org",
+        "location": "subreddit",
+        "endpoint": "/internal/on/menu/sync-now"
+      },
+      {
+        "label": "Post test-thread",
+        "description": "Post een test wedstrijdthread",
+        "location": "subreddit",
+        "endpoint": "/internal/on/menu/test-post"
+      },
+      {
+        "label": "Overzicht wedstrijden",
+        "description": "Toon alle opgehaalde wedstrijden",
+        "location": "subreddit",
+        "endpoint": "/internal/on/menu/overview"
+      }
+    ]
+  },
+  "triggers": {
+    "onAppInstall": "/internal/on/app/install"
+  },
+  "settings": {
+    "global": {
+      "footballDataToken": {
+        "type": "string",
+        "label": "Football-Data.org API Token",
+        "isSecret": true
+      }
+    },
+    "subreddit": {
+      "flairText": {
+        "type": "string",
+        "label": "Flair tekst (leeg = geen flair)",
+        "defaultValue": "Wedstrijdthread"
+      }
+    }
+  },
+  "permissions": {
+    "http": {
+      "domains": [
+        "api.football-data.org"
+      ]
+    }
+  },
+  "dev": {
+    "subreddit": "twente_match_thre_dev"
+  }
+}
